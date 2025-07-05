@@ -112,11 +112,6 @@ await queryInterface.bulkInsert('produtos', [
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('produtos', null, {});
-     */
+ await queryInterface.bulkDelete('produtos', null, {});
   }
 };

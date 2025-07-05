@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     descricao: DataTypes.STRING,
     preco: DataTypes.INTEGER,
     url_foto: DataTypes.STRING,
-    categoria: DataTypes.INTEGER,
+    categoria_id: DataTypes.INTEGER,
     promocao: DataTypes.BOOLEAN,
     menu_do_dia: DataTypes.BOOLEAN,
     mais_pedidos: DataTypes.BOOLEAN,
