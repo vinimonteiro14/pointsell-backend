@@ -5,7 +5,7 @@ class Controller {
         this.entidadeService = entidadeService;
     }
 
-    async getAll(req, res) {
+    async getAll(req, res, next) {
         try {
             const listaDeRegistros = await this.entidadeService.pegaTodosOsRegistros();
             return res.status(200).json(listaDeRegistros);
@@ -14,7 +14,7 @@ class Controller {
         }
     }
 
-    async getOneById(req,res) {
+    async getOneById(req,res, next) {
         const { id } = req.params;
         try {
             const umRegistro = await this.entidadeService.pegaUmRegistroPorId(Number(id));
@@ -29,7 +29,7 @@ class Controller {
         }
     }
 
-    async createNew (req, res) {
+    async createNew (req, res, next) {
         const dadosparaCriacao = req.body;
         try {
             const novoRegistroCriado = await this.entidadeService.criaRegistro(dadosparaCriacao);
@@ -39,7 +39,7 @@ class Controller {
         }
     }
 
-    async update(req, res) {
+    async update(req, res, next) {
         const { id } = req.params;
         const dadosAtualizados = req.body;
         try {
@@ -54,10 +54,10 @@ class Controller {
         }
     }
 
-    async delete (req, res) {
+    async delete (req, res, next) {
         const { id } = req.params;
         try {
-            await this.entidadeService.excluiRegistro(Number(id));
+           const umRegistro = await this.entidadeService.excluiRegistro(Number(id));
             if( umRegistro !== null) {
                 return res.status(200).json({mensagem: `id ${id} deletado com sucesso`});
             } else {
